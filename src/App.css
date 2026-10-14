@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: hsl(0, 0%, 6%);
+  --secondary-color: hsl(293, 11%, 15%);
+  --background-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  overflow: hidden;;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body{
+  height: 100vh;
   color: white;
+  background: var(--background-gradient);
 }
 
-.App-link {
-  color: #61dafb;
+#root{
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app{
+  display: grid;
+  row-gap: 30px;
+  justify-content: center;
+  text-align: center;
+  margin-top: 8%;
+}
+
+.clock {
+  position: relative;
+  background-color: palegoldenrod;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+.center {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center-dot {
+  position: absolute;
+  inset: 0;
+  background-color: #282c34;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.hour-arm,
+.minute-arm,
+.second-arm {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  background-color: rebeccapurple;
+  border-radius: 5px;
+}
+
+.hour-arm {
+  height: 85px;
+  width: 8px;
+}
+
+.minute-arm {
+  height: 125px;
+  width: 5px;
+}
+
+.second-arm {
+  height: 30px;
+  width: 2px;
+  background-color: red;
+}
+
+.mark {
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  background-color: #555;
+  left: 50%;
+  top: 5px;
+
+  transform: translateX(-50%) rotate(calc(var(--i) * 6deg));
+  transform-origin: 50% 145px;
+}
+
+.mark.hour-mark {
+  width: 4px;
+  height: 12px;
+  background-color: #282c34;
+}
+
+.digital-time{
+  font-size: 3rem;
+  background-color: #2d2b2b;
+  padding: 8px;
+  border: 2px solid rgb(44, 44, 237);
+  border-radius: 4%;
 }
